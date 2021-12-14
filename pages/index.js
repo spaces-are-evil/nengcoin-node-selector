@@ -92,7 +92,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 onClick={(event) => (handleFlagClick(event, country))}
                 style={filteredNodeCountryList.includes(country) ? buttonActive : button}
             >
-                <Image src={("/" + country + ".svg")} width={100} height={100} />
+                <Image src={("/images/" + country + ".svg")} width={100} height={100} alt={country} />
             </button>
         </>
     );
@@ -367,7 +367,7 @@ const propbagstyle = {
 const Node = ({ ipport, subver, blocksfromcurrent, country }) => (
     <>
         <div style={propbagstyle} >
-            <div><Image src={"/" + country + ".svg"} width={20} height={20} /></div>
+            <div><Image src={"/images/" + country + ".svg"} width={20} height={20} alt={country} /></div>
             <div>{ipport}</div>
             <div>{subver.substring(1,subver.length-1)}</div>
             <div>{blocksfromcurrent} blocks away</div>
