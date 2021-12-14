@@ -2,7 +2,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start -p $PORT",
+    "postinstall": "ng build"
   },
   "dependencies": {
     "axios": "^0.24.0",
