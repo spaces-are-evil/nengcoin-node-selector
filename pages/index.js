@@ -67,10 +67,10 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
     const button = {
         width: '150px',
         height: '150px',
-        'background-color': 'transparent',
+        backgroundColor: 'transparent',
         color: 'white',
         border: '1.5px solid #000000',
-        'border-radius': '5px',
+        borderRadius: '5px',
         cursor: 'pointer'
     }
 
@@ -78,8 +78,9 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
     const buttonActive = {
         width: '150px',
         height: '150px',
-        'background-color': '#808080',
-        border: '1.5px solid rgb(25, 26, 24)'
+        backgroundColor: '#808080',
+        borderRadius: '5px',
+        border: '1.5px solid #000000'
     }
 
     //button element
@@ -91,7 +92,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 onClick={(event) => (handleFlagClick(event, country))}
                 style={filteredNodeCountryList.includes(country) ? buttonActive : button}
             >
-                <Image key={country} name={country} src={"/" + country + ".svg"} width={100} height={100} alt={country} />
+                <img src={"/" + country + ".svg"} width={100} height={100} alt={country} />
             </button>
         </>
     );
@@ -350,16 +351,16 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
 const propbagstyle = {
     display: 'inline-flex',
-    'flex 1': '20%',
-    'flex-direction': 'row',
+    flex: '1 20%',
+    flexDirection: 'row',
     margin: '0rem',
     padding: '1.5rem',
     color: 'inherit',
-    'justify-content': 'center',
+    justifyContent: 'center',
     gap: '10px',
-    'flex-wrap': 'nowrap',
-    'align-items': 'baseline',
-    'text-decoration': 'none',
+    flexWrap: 'nowrap',
+    alignItems: 'baseline',
+    textDecoration: 'none',
     transition: 'color 0.15s ease, border - color 0.15s ease'
 }
 
