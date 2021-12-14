@@ -91,7 +91,7 @@ export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
                 onClick={(event) => (handleFlagClick(event, country))}
                 style={filteredNodeCountryList.includes(country) ? buttonActive : button}
             >
-                <Image key={country} name={country} src={"/flags/" + country + ".svg"} width={100} height={100} alt={country} />
+                <Image key={country} name={country} src={"../flags/" + country + ".svg"} width={100} height={100} alt={country} />
             </button>
         </>
     );
