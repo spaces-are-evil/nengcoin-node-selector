@@ -3,7 +3,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start -p $PORT",
-    "postinstall": "ng build"
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "axios": "^0.24.0",
