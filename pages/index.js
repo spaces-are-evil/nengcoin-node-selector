@@ -92,7 +92,12 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 onClick={(event) => (handleFlagClick(event, country))}
                 style={filteredNodeCountryList.includes(country) ? buttonActive : button}
             >
-                <Image src={("/images/" + country + ".svg")} width={100} height={100} alt={country} />
+                <Image
+                    width={120}
+                    height={80}
+                    src={`/${country}.png`}
+                    alt={country}
+                />
             </button>
         </>
     );
@@ -205,12 +210,11 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           flex-wrap: wrap;
           flex-direction: column;
 
-          max-width: 600px;
+          max-width: 4000px;
           margin-top: 3rem;
         }
 
         .card {
-          display: flex;
           flex: 1;
           flex-direction: column;
           margin: 1rem;
@@ -224,11 +228,9 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           border: 2px solid #000000;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
-          flex-flow: center;
         }
 
         .flagcard {
-          display: flex;
           flex: 1;
           flex-basis: 50%;
           flex-direction: row;
@@ -246,7 +248,6 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
         }
 
         .copycard {
-          display: flex;
           flex: 1;
           flex-direction: column;
           margin: 1rem;
@@ -361,13 +362,14 @@ const propbagstyle = {
     flexWrap: 'nowrap',
     alignItems: 'baseline',
     textDecoration: 'none',
+    fontSize: '1.25rem',
     transition: 'color 0.15s ease, border - color 0.15s ease'
 }
 
 const Node = ({ ipport, subver, blocksfromcurrent, country }) => (
     <>
         <div style={propbagstyle} >
-            <div><Image src={"/images/" + country + ".svg"} width={20} height={20} alt={country} /></div>
+            <div><Image src={`/${country}.png`} width={30} height={20} alt={country} /></div>
             <div>{ipport}</div>
             <div>{subver.substring(1,subver.length-1)}</div>
             <div>{blocksfromcurrent} blocks away</div>
