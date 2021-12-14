@@ -9,7 +9,7 @@ import { ClipboardCopy } from '../lib/clipboardcopy'
 
 import React, { useState } from 'react';
 
-export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
+export default function Home({ nodes, connectedNodes, nodeCountries, currentBlock }) {
     const [nodeList, setNodeList] = useState(connectedNodes);
     const [filteredNodeList, setFilteredNodeList] = useState(nodeList);
 
@@ -91,11 +91,12 @@ export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
                 onClick={(event) => (handleFlagClick(event, country))}
                 style={filteredNodeCountryList.includes(country) ? buttonActive : button}
             >
-                <Image key={country} name={country} src={"../flags/" + country + ".svg"} width={100} height={100} alt={country} />
+                <Image key={country} name={country} src={"/" + country + ".svg"} width={100} height={100} alt={country} />
             </button>
         </>
     );
 
+    //page html
   return (
       <div className="container">
       <Head>
@@ -122,7 +123,8 @@ export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
                   </div>
                   <div className="card">
                       <ClipboardCopy copyText={filteredNodeList} buttonText="Copy Config Friendly List" isNodeOutput="true" />
-                      <h2> {filteredNodeList.length} Active Nodes </h2>
+                      <h2> {filteredNodeList.length}/{nodes.length} Active Nodes </h2>
+                      <h3> {`Current API Block: ${currentBlock}` }</h3>
                       {
                           
                           filteredNodeList.map((node) => (
@@ -300,6 +302,11 @@ export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
           font-size: 2rem;
         }
 
+        .card h3 {
+          margin: 0 0 1rem 0;
+          font-size: 1.5rem;
+        }
+
         .flagcard h2 {
           margin: 0 0 1rem 0;
           font-size: 2rem;
@@ -359,7 +366,7 @@ const propbagstyle = {
 const Node = ({ ipport, subver, blocksfromcurrent, country }) => (
     <>
         <div style={propbagstyle} >
-            <div><Image src={"/flags/" + country + ".svg"} width={20} height={20} /></div>
+            <div><Image src={"/" + country + ".svg"} width={20} height={20} /></div>
             <div>{ipport}</div>
             <div>{subver.substring(1,subver.length-1)}</div>
             <div>{blocksfromcurrent} blocks away</div>
@@ -379,6 +386,7 @@ export async function getStaticProps()
 
     return {
         props: {
+            nodes,
             connectedNodes,
             nodeCountries,
             currentBlock
