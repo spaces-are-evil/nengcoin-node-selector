@@ -95,7 +95,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 <Image
                     width={120}
                     height={80}
-                    src={`/${country}.png`}
+                    src={`/images/${country}.png`}
                     alt={country}
                 />
             </button>
@@ -369,7 +369,7 @@ const propbagstyle = {
 const Node = ({ ipport, subver, blocksfromcurrent, country }) => (
     <>
         <div style={propbagstyle} >
-            <div><Image src={`/${country}.png`} width={30} height={20} alt={country} /></div>
+            <div><Image src={`/images/${country}.png`} width={30} height={20} alt={country} /></div>
             <div>{ipport}</div>
             <div>{subver.substring(1,subver.length-1)}</div>
             <div>{blocksfromcurrent} blocks away</div>
