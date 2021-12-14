@@ -16,6 +16,8 @@ export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
     const [nodeCountryList, setSelectedNodeCountryList] = useState(nodeCountries);
     const [filteredNodeCountryList, setFilteredNodeCountryList] = useState("");
 
+    const donateAddress = "CZ61zSSNXjeeHetpHYzt9BZnhNmnsccpHs";
+
     //button click event
     const handleFlagClick = (event, country) => {
         var currentFilteredNodeCountryList = filteredNodeCountryList;
@@ -119,7 +121,7 @@ export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
                       </div>
                   </div>
                   <div className="card">
-                      <ClipboardCopy copyText={filteredNodeList} />
+                      <ClipboardCopy copyText={filteredNodeList} buttonText="Copy Config Friendly List" isNodeOutput="true" />
                       <h2> {filteredNodeList.length} Active Nodes </h2>
                       {
                           
@@ -133,6 +135,11 @@ export default function Home({ connectedNodes, nodeCountries, currentBlock }) {
                           ))
                       }
                   </div>
+                  <div className="card">
+                      <h2> Donate </h2>
+                      <ClipboardCopy copyText={donateAddress} buttonText="Copy Donate Address" isNodeOutput="false" />
+                  </div>
+
               </div>
           </main>
 
