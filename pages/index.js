@@ -7,7 +7,7 @@ import { getCurrentBlock } from '../lib/miningnodes'
 
 import { ClipboardCopy } from '../lib/clipboardcopy'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 export default function Home({ nodes, connectedNodes, nodeCountries, currentBlock }) {
     const [nodeList, setNodeList] = useState(connectedNodes);
@@ -92,7 +92,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 onClick={(event) => (handleFlagClick(event, country))}
                 style={filteredNodeCountryList.includes(country) ? buttonActive : button}
             >
-                <img src={"/" + country + ".svg"} width={100} height={100} alt={country} />
+                <Image src={("/" + country + ".svg")} width={100} height={100} />
             </button>
         </>
     );
