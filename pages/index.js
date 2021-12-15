@@ -16,7 +16,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
     const [nodeCountryList, setSelectedNodeCountryList] = useState(nodeCountries);
     const [filteredNodeCountryList, setFilteredNodeCountryList] = useState("");
 
-    const donateAddress = "CZ61zSSNXjeeHetpHYzt9BZnhNmnsccpHs";
+    const donateAddress = "CHnMzKaAB1TDoHKi7MePNHf6ymhP9eSNiB";
 
     //button click event
     const handleFlagClick = (event, country) => {
@@ -228,6 +228,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           border: 2px solid #000000;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
+          background: rgb(255,255,255);
+          background: rgba(255,255,255,0.5);
         }
 
         .flagcard {
@@ -244,7 +246,10 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           text-decoration: none;
           border: 2px solid #000000;
           border-radius: 10px;
+          background-color: white;
           transition: color 0.15s ease, border-color 0.15s ease;
+          background: rgb(255,255,255);
+          background: rgba(255,255,255,0.5);
         }
 
         .copycard {
@@ -262,6 +267,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
           flex-flow: center;
+          background: rgb(255,255,255);
+          background: rgba(255,255,255,0.5);
         }
 
       .copybutton:focus-visible {
@@ -318,6 +325,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           margin: 0;
           font-size: 1.25rem;
           line-height: 1.5;
+          font-weight: bold,
         }
 
         @media (max-width: 400px) {
