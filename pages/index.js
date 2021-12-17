@@ -10,8 +10,8 @@ import { ClipboardCopy } from '../lib/clipboardcopy'
 import React, { useState } from 'react'
 
 export default function Home({ nodes, connectedNodes, nodeCountries, currentBlock }) {
-    const [nodeList, setNodeList] = useState(connectedNodes);
-    const [filteredNodeList, setFilteredNodeList] = useState(nodeList);
+    const [nodeList, setNodeList] = useState(nodes);
+    const [filteredNodeList, setFilteredNodeList] = useState(connectedNodes);
 
     const [nodeCountryList, setSelectedNodeCountryList] = useState(nodeCountries);
     const [filteredNodeCountryList, setFilteredNodeCountryList] = useState("");
@@ -93,8 +93,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 style={filteredNodeCountryList.includes(country) ? buttonActive : button}
             >
                 <Image
-                    width={120}
-                    height={80}
+                    width={128}
+                    height={128}
                     src={`/${country}.png`}
                     alt={country}
                 />
@@ -377,7 +377,7 @@ const propbagstyle = {
 const Node = ({ ipport, subver, blocksfromcurrent, country }) => (
     <>
         <div style={propbagstyle} >
-            <div><Image src={`/${country}.png`} width={30} height={20} alt={country} /></div>
+            <div><Image src={`/${country}.png`} width={30} height={30} alt={country} /></div>
             <div>{ipport}</div>
             <div>{subver.substring(1,subver.length-1)}</div>
             <div>{blocksfromcurrent} blocks away</div>
@@ -388,12 +388,14 @@ const Node = ({ ipport, subver, blocksfromcurrent, country }) => (
 export async function getStaticProps()
 {
     let nodes  = await getConnectedNodes();
-    const nodeCountries = await getNodeCountries(nodes);
+    
     const currentBlock = await getCurrentBlock();
 
     const blockHeightDifferenceLimit = 2000;
 
     const connectedNodes = nodes.filter((node) => { if (node.blocksfromcurrent < blockHeightDifferenceLimit) return node });
+
+    const nodeCountries = await getNodeCountries(connectedNodes);
 
     return {
         props: {
