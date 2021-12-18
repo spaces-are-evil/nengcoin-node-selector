@@ -71,10 +71,12 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     //button unclicked
     const button = {
-        width: '200px',
-        height: '200px',
+        width: '180px',
+        height: '180px',
         backgroundColor: 'transparent',
         color: 'black',
+        fontSize: '12px',
+        fontWeight: 'bold',
         border: '1.5px solid #000000',
         borderRadius: '5px',
         cursor: 'pointer'
@@ -82,10 +84,12 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     //button clicked
     const buttonActive = {
-        width: '200px',
-        height: '200px',
+        width: '180px',
+        height: '180px',
         backgroundColor: '#808080',
         borderRadius: '5px',
+        fontSize: '12px',
+        fontWeight: 'bold',
         color: 'black',
         border: '1.5px solid #000000'
     }
@@ -140,9 +144,9 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                   <div className="card">
                       <ClipboardCopy copyText={filteredNodeList} buttonText="Copy Config Friendly List" isNodeOutput="true" />
                       <h2> {filteredNodeList.length}/{nodes.length} Active Nodes </h2>
-                      <h3> {`Current API Block: ${currentBlock}` }</h3>
+                      <h3> {`Current API Block: ${currentBlock}`}</h3>
+                      <div className="nodeInfo">
                       {
-                          
                           filteredNodeList.map((node) => (
                               <Node
                                   ipport={node.ipport}
@@ -152,7 +156,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                                   countryName={node.CountryName}
                               />
                           ))
-                      }
+                        }
+                        </div>
                   </div>
                   <div className="card">
                       <h2> Donate </h2>
@@ -357,7 +362,19 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           margin: 0;
           font-size: 1.25rem;
           line-height: 1.5;
-          font-weight: bold,
+          font-weight: bold;
+        }
+
+        .nodeInfo {
+          display: flex:
+          flex-flow: row wrap;
+          padding: 1rem;
+          color: inherit;
+          gap: 5px;
+          align-items: baseline;
+          text-decoration: none;
+          font-size: 1.25rem;
+          transition: color 0.15s ease; border-color 0.15s ease;
         }
 
         @media (max-width: 400px) {
@@ -386,18 +403,10 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
   )
 }
 
-const propbagstyle = {
-    display: 'flex',
-    flexDirection: 'row',
-    flexWrap: 'nowrap',
-    padding: '1rem',
-    color: 'inherit',
-    justifyContent: 'center',
-    gap: '5px',
-    alignItems: 'baseline',
-    textDecoration: 'none',
-    fontSize: '1.25rem',
-    transition: 'color 0.15s ease, border - color 0.15s ease',
+const node = {
+    display: "flex",
+    flexFlow: "row wrap",
+    flex: "1 1 100%"
 }
 
 const column1 = {
@@ -416,7 +425,7 @@ const column3 = {
 
 const Node = ({ ipport, subver, blocksfromcurrent, countryId, countryName }) => (
     <>
-        <div style={propbagstyle} >
+        <div style={node}>
             <div style={column1}><Image src={`/${countryId}.png`} width={30} height={30} alt={countryName} layout='fixed' /></div>
             <div style={column2}>{ipport}</div>
             <div style={column3}>{blocksfromcurrent} blocks away</div>
