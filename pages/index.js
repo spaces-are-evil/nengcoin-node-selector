@@ -112,7 +112,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
     );
 
     //page html
-  return (
+    return (
       <div className="container">
       <Head>
         <title>Cheetahcoin Node Selector</title>
@@ -171,6 +171,11 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           justify-content: center;
           align-items: center;
           flex-flow: column wrap;
+          background-image: url(../background.jpg);
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-attachment: fixed;
         }
 
         main {
@@ -355,10 +360,6 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
             Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
             sans-serif;
-          background-image: url(../background.jpg);
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
         }
 
         * {
@@ -370,28 +371,39 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 }
 
 const propbagstyle = {
-    display: 'inline-flex',
-    flex: '1 20%',
+    display: 'flex',
     flexDirection: 'row',
-    margin: '0rem',
-    padding: '1.5rem',
+    flexWrap: 'wrap',
+    padding: '1rem',
     color: 'inherit',
     justifyContent: 'center',
-    gap: '10px',
-    flexWrap: 'nowrap',
+    gap: '5px',
     alignItems: 'baseline',
     textDecoration: 'none',
     fontSize: '1.25rem',
-    transition: 'color 0.15s ease, border - color 0.15s ease'
+    transition: 'color 0.15s ease, border - color 0.15s ease',
+}
+
+const column1 = {
+    float: 'left',
+    flex: '5%',
+}
+const column2 = {
+    float: 'left',
+    flex: '30%',
+}
+
+const column3 = {
+    float: 'left',
+    flex: '15%',
 }
 
 const Node = ({ ipport, subver, blocksfromcurrent, countryId, countryName }) => (
     <>
         <div style={propbagstyle} >
-            <div><Image src={`/${countryId}.png`} width={30} height={30} alt={countryName} layout='fixed' /></div>
-            <div>{ipport}</div>
-            <div>{subver.substring(1,subver.length-1)}</div>
-            <div>{blocksfromcurrent} blocks away</div>
+            <div style={column1}><Image src={`/${countryId}.png`} width={30} height={30} alt={countryName} layout='fixed' /></div>
+            <div style={column2}>{ipport}</div>
+            <div style={column3}>{blocksfromcurrent} blocks away</div>
         </div>
     </>
 );
