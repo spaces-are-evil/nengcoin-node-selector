@@ -178,6 +178,22 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           background-attachment: fixed;
         }
 
+        .container:before {
+          content: "";
+          display: block;
+          position: fixed;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -10;
+          background: url(../background.jpg) no-repeat center center;
+          -webkit-background-size: cover;
+          -moz-background-size: cover;
+          -o-background-size: cover;
+          background-size: cover;
+        }
+
         main {
           padding: 5rem 0;
           flex: 1;
@@ -373,7 +389,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 const propbagstyle = {
     display: 'flex',
     flexDirection: 'row',
-    flexWrap: 'wrap',
+    flexWrap: 'nowrap',
     padding: '1rem',
     color: 'inherit',
     justifyContent: 'center',
