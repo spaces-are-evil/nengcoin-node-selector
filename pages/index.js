@@ -71,27 +71,34 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     //button unclicked
     const button = {
-        width: '180px',
-        height: '180px',
+        width: '150px',
+        height: '150px',
         backgroundColor: 'transparent',
         color: 'black',
         fontSize: '12px',
         fontWeight: 'bold',
         border: '1.5px solid #000000',
         borderRadius: '5px',
-        cursor: 'pointer'
+        cursor: 'pointer',
+        boxShadow: '2px 2px 2px grey'
     }
 
     //button clicked
     const buttonActive = {
-        width: '180px',
-        height: '180px',
+        width: '150px',
+        height: '150px',
         backgroundColor: '#808080',
         borderRadius: '5px',
         fontSize: '12px',
         fontWeight: 'bold',
         color: 'black',
-        border: '1.5px solid #000000'
+        border: '1.5px solid #000000',
+        boxShadow: '2px 2px 2px black'
+    }
+
+    const country = {
+        position: 'relative',
+        bottom: '25px'
     }
 
 
@@ -110,7 +117,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                     src={`/${countryId}.png`}
                     alt={countryName}
                 />
-                <h3>{countryName}</h3>
+                <h3 style={country}>{countryName}</h3>
             </button>
         </>
     );
@@ -207,7 +214,6 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           justify-content: center;
           align-items: center;
           flex-flow: column wrap;
-
         }
 
         a {
@@ -252,10 +258,9 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
         }
 
         .card {
-          flex: 1;
+          flex: 1 0 45%;
           flex-direction: column;
           margin: 1rem;
-          flex-basis: 45%;
           padding: 1.5rem;
           text-align: center;
           color: inherit;
@@ -267,11 +272,11 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           transition: color 0.15s ease, border-color 0.15s ease;
           background: rgb(255,255,255);
           background: rgba(255,255,255,0.5);
+          width: 90vw;
         }
 
         .flagcard {
-          flex: 1;
-          flex-basis: 50%;
+          flex: 1 0 45%;
           flex-direction: row;
           margin: 1rem;
           padding: 1.5rem;
@@ -287,10 +292,11 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           transition: color 0.15s ease, border-color 0.15s ease;
           background: rgb(255,255,255);
           background: rgba(255,255,255,0.5);
+          width: 90vw;
         }
 
         .copycard {
-          flex: 1;
+          flex: 1 0 45%;
           flex-direction: column;
           margin: 1rem;
           flex-basis: 45%;
@@ -306,30 +312,12 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           flex-flow: center;
           background: rgb(255,255,255);
           background: rgba(255,255,255,0.5);
+          width: 90vw;
         }
-
-      .copybutton:focus-visible {
-        box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
-        transition: box-shadow .2s;
-      }
-      
-      .copybutton:active {
-        background-color: #F7F7F7;
-        border-color: #000000;
-        transform: scale(.96);
-      }
-      
-      .copybutton:disabled {
-        border-color: #DDDDDD;
-        color: #DDDDDD;
-        cursor: not-allowed;
-        opacity: 1;
-      }
 
         .flagcardcontainer {
           display: inline-flex;
-          flex: 1;
-          flex-basis: 100%;
+          flex: 1 0 45%;
           flex-direction: row;
           margin: 1rem;
           padding: 1.5rem;
@@ -366,14 +354,18 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
         }
 
         .nodeInfo {
-          display: flex:
+          display: flex;
           flex-flow: row wrap;
+          justify-content: space-evenly;
+          flex: 0 0;
+          align-items: stretch;
+          align-content: space-evenly;
           padding: 1rem;
           color: inherit;
           gap: 5px;
-          align-items: baseline;
           text-decoration: none;
-          font-size: 1.25rem;
+          font-size: 1rem;
+          font-weight: 500;
           transition: color 0.15s ease; border-color 0.15s ease;
         }
 
@@ -395,6 +387,16 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
             sans-serif;
         }
 
+        particle {
+          position: fixed;
+          top: 0;
+          left: 0;
+          opacity: 0;
+          pointer-events: none;
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+
         * {
           box-sizing: border-box;
         }
@@ -405,30 +407,34 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
 const node = {
     display: "flex",
-    flexFlow: "row wrap",
-    flex: "1 1 100%"
+    flexFlow: "row nowrap",
+    'justify-content': "space-between",
+    alignItems: "center",
+    gap: "10px 10px"
 }
 
 const column1 = {
-    float: 'left',
-    flex: '5%',
+    width: '0px',
+    flex: '1 0'
 }
+
 const column2 = {
-    float: 'left',
-    flex: '30%',
+    width: '0px',
+    flex: '2 0'
 }
 
 const column3 = {
-    float: 'left',
-    flex: '15%',
+    width: '400px',
+    flex: '2 0'
 }
+
 
 const Node = ({ ipport, subver, blocksfromcurrent, countryId, countryName }) => (
     <>
         <div style={node}>
             <div style={column1}><Image src={`/${countryId}.png`} width={30} height={30} alt={countryName} layout='fixed' /></div>
             <div style={column2}>{ipport}</div>
-            <div style={column3}>{blocksfromcurrent} blocks away</div>
+            <div style={column3}>{blocksfromcurrent} away</div>
         </div>
     </>
 );
