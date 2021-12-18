@@ -4,16 +4,18 @@ import Image from 'next/image'
 import { getConnectedNodes } from '../lib/miningnodes'
 import { getNodeCountries } from '../lib/miningnodes'
 import { getCurrentBlock } from '../lib/miningnodes'
-
+import { GetFullCountryName } from '../lib/miningnodes'
 import { ClipboardCopy } from '../lib/clipboardcopy'
 
 import React, { useState } from 'react'
 
 export default function Home({ nodes, connectedNodes, nodeCountries, currentBlock }) {
     const [nodeList, setNodeList] = useState(nodes);
+
     const [filteredNodeList, setFilteredNodeList] = useState(connectedNodes);
 
     const [nodeCountryList, setSelectedNodeCountryList] = useState(nodeCountries);
+
     const [filteredNodeCountryList, setFilteredNodeCountryList] = useState("");
 
     const donateAddress = "CHnMzKaAB1TDoHKi7MePNHf6ymhP9eSNiB";
@@ -47,28 +49,32 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
         //update state
         setFilteredNodeCountryList(currentFilteredNodeCountryList);
-        var newFilteredNodeList;
 
-        //do if filter is empty
-        if ((typeof (currentFilteredNodeCountryList) !== 'undefined' && currentFilteredNodeCountryList.length === 0)
-            || currentFilteredNodeCountryList === undefined || currentFilteredNodeCountryList.length == 0) {
-            //reset filtered node list
-            newFilteredNodeList = nodeList;
-        }
-        else {
-            //filter node list
-            newFilteredNodeList = nodeList.filter((node) => { if (currentFilteredNodeCountryList.includes(node.country)) { return node } });
-
-        }
+        var newFilteredNodeList = nodeList.filter((node) => {
+            //apply blocks away filter
+            if (node.blocksfromcurrent < 2000) {
+                //empty country filter, just return the node
+                if (typeof (currentFilteredNodeCountryList) !== 'undefined' && currentFilteredNodeCountryList.length === 0
+                    || currentFilteredNodeCountryList === undefined || currentFilteredNodeCountryList.length == 0) {
+                    return node;
+                }
+                //return node only if node country in filter list
+                else {
+                    if (currentFilteredNodeCountryList.includes(node.countryId)) {
+                        return node;
+                    }
+                }
+            }
+        });
         setFilteredNodeList(newFilteredNodeList);
     }
 
     //button unclicked
     const button = {
-        width: '150px',
-        height: '150px',
+        width: '200px',
+        height: '200px',
         backgroundColor: 'transparent',
-        color: 'white',
+        color: 'black',
         border: '1.5px solid #000000',
         borderRadius: '5px',
         cursor: 'pointer'
@@ -76,28 +82,31 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     //button clicked
     const buttonActive = {
-        width: '150px',
-        height: '150px',
+        width: '200px',
+        height: '200px',
         backgroundColor: '#808080',
         borderRadius: '5px',
+        color: 'black',
         border: '1.5px solid #000000'
     }
 
+
     //button element
-    const FlagButton = ({ country }) => (
+    const FlagButton = ({ countryId, countryName }) => (
         <>
             <button
-                key={country}
-                name={country}
-                onClick={(event) => (handleFlagClick(event, country))}
-                style={filteredNodeCountryList.includes(country) ? buttonActive : button}
+                key={countryId}
+                name={countryId}
+                onClick={(event) => (handleFlagClick(event, countryId))}
+                style={filteredNodeCountryList.includes(countryId) ? buttonActive : button}
             >
                 <Image
                     width={128}
                     height={128}
-                    src={`/${country}.png`}
-                    alt={country}
+                    src={`/${countryId}.png`}
+                    alt={countryName}
                 />
+                <h3>{countryName}</h3>
             </button>
         </>
     );
@@ -119,9 +128,10 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                       <h2>Select Country</h2>
                       <div className="flagcardcontainer">
                           {
-                              nodeCountryList.map((country) => (
+                              nodeCountryList.map((node) => (
                                   <FlagButton
-                                      country={country}
+                                      countryId={node.countryId }
+                                      countryName={node.countryName }
                                   />
                                ))
                           }
@@ -138,7 +148,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                                   ipport={node.ipport}
                                   subver={node.subver}
                                   blocksfromcurrent={node.blocksfromcurrent}
-                                  country={node.country}
+                                  countryId={node.countryId}
+                                  countryName={node.CountryName}
                               />
                           ))
                       }
@@ -374,10 +385,10 @@ const propbagstyle = {
     transition: 'color 0.15s ease, border - color 0.15s ease'
 }
 
-const Node = ({ ipport, subver, blocksfromcurrent, country }) => (
+const Node = ({ ipport, subver, blocksfromcurrent, countryId, countryName }) => (
     <>
         <div style={propbagstyle} >
-            <div><Image src={`/${country}.png`} width={30} height={30} alt={country} /></div>
+            <div><Image src={`/${countryId}.png`} width={30} height={30} alt={countryName} layout='fixed' /></div>
             <div>{ipport}</div>
             <div>{subver.substring(1,subver.length-1)}</div>
             <div>{blocksfromcurrent} blocks away</div>
