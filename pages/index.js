@@ -87,7 +87,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
     const buttonActive = {
         width: '125px',
         height: '125px',
-        backgroundColor: '#808080',
+        backgroundColor: '#D3D3D3',
         borderRadius: '5px',
         fontSize: '12px',
         fontWeight: 'bold',
