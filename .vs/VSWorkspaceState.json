@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nextjs-blog",
-    "\\nextjs-blog\\lib",
-    "\\nextjs-blog\\pages",
-    "\\nextjs-blog\\public"
+    "\\lib",
+    "\\pages",
+    "\\public"
   ],
-  "SelectedNode": "\\nextjs-blog\\pages\\index.js",
+  "SelectedNode": "\\lib\\miningnodes.js",
   "PreviewInSolutionExplorer": false
 }
