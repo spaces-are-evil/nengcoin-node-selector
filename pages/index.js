@@ -71,8 +71,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     //button unclicked
     const button = {
-        width: '150px',
-        height: '150px',
+        width: '125px',
+        height: '125px',
         backgroundColor: 'transparent',
         color: 'black',
         fontSize: '12px',
@@ -85,8 +85,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     //button clicked
     const buttonActive = {
-        width: '150px',
-        height: '150px',
+        width: '125px',
+        height: '125px',
         backgroundColor: '#808080',
         borderRadius: '5px',
         fontSize: '12px',
@@ -98,7 +98,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     const country = {
         position: 'relative',
-        bottom: '25px'
+        bottom: '25px',
+        fontSize: '1em'
     }
 
 
@@ -112,8 +113,8 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
                 style={filteredNodeCountryList.includes(countryId) ? buttonActive : button}
             >
                 <Image
-                    width={128}
-                    height={128}
+                    width='100%'
+                    height='100%'
                     src={`/${countryId}.png`}
                     alt={countryName}
                 />
@@ -272,14 +273,14 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           transition: color 0.15s ease, border-color 0.15s ease;
           background: rgb(255,255,255);
           background: rgba(255,255,255,0.5);
-          width: 90vw;
+          width: 95vw;
         }
 
         .flagcard {
-          flex: 1 0 45%;
+          flex: 1 0;
           flex-direction: row;
           margin: 1rem;
-          padding: 1.5rem;
+          padding: 1rem;
           text-align: center;
           color: inherit;
           justify-content: center;
@@ -292,7 +293,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           transition: color 0.15s ease, border-color 0.15s ease;
           background: rgb(255,255,255);
           background: rgba(255,255,255,0.5);
-          width: 90vw;
+          width: 95vw;
         }
 
         .copycard {
@@ -312,7 +313,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
           flex-flow: center;
           background: rgb(255,255,255);
           background: rgba(255,255,255,0.5);
-          width: 90vw;
+          width: 95vw;
         }
 
         .flagcardcontainer {
