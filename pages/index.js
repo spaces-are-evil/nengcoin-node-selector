@@ -127,13 +127,13 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
     return (
       <div className="container">
       <Head>
-        <title>Cheetahcoin Node Selector</title>
-        <link rel="icon" href="/cheetahcoin.ico" />
+        <title>Nengcoin Node Selector</title>
+        <link rel="icon" href="/Nengcoin.ico" />
       </Head>
 
       <main>
         <h1 className="title">
-            <a href="https://cheetahcoin.org/">Cheetahcoin</a> Node Selector
+            <a href="https://Nengcoin.org/">Nengcoin</a> Node Selector
         </h1>
               <div className="grid">
                   <div className="flagcard">
