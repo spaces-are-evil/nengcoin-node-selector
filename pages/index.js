@@ -18,7 +18,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
     const [filteredNodeCountryList, setFilteredNodeCountryList] = useState("");
 
-    const donateAddress = "CHnMzKaAB1TDoHKi7MePNHf6ymhP9eSNiB";
+    const donateAddress = "NfdrLfLrosekRHPJ5wYnnvywmnzF3MMRgN";
 
     //button click event
     const handleFlagClick = (event, country) => {
