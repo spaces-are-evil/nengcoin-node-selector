@@ -52,7 +52,7 @@ export default function Home({ nodes, connectedNodes, nodeCountries, currentBloc
 
         var newFilteredNodeList = nodeList.filter((node) => {
             //apply blocks away filter
-            if (node.blocksfromcurrent < 2000) {
+            if (node.blocksfromcurrent < 3000) {
                 //empty country filter, just return the node
                 if (typeof (currentFilteredNodeCountryList) !== 'undefined' && currentFilteredNodeCountryList.length === 0
                     || currentFilteredNodeCountryList === undefined || currentFilteredNodeCountryList.length == 0) {
@@ -446,7 +446,7 @@ export async function getStaticProps()
     
     const currentBlock = await getCurrentBlock();
 
-    const blockHeightDifferenceLimit = 2000;
+    const blockHeightDifferenceLimit = 3000;
 
     const connectedNodes = nodes.filter((node) => { if (node.blocksfromcurrent < blockHeightDifferenceLimit) return node });
 
