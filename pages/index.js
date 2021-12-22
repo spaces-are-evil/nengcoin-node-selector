@@ -448,6 +448,7 @@ export async function getStaticProps()
 
     const blockHeightDifferenceLimit = 3000;
 
+
     const connectedNodes = nodes.filter((node) => { if (node.blocksfromcurrent < blockHeightDifferenceLimit) return node });
 
     const nodeCountries = await getNodeCountries(connectedNodes);
